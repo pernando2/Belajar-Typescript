@@ -1,0 +1,50 @@
+// Visit https://aka.ms/tsconfig to read more about this file
+{
+  "compilerOptions": {
+    /* === BASIC === */
+    "target": "ES2022",                    // Output JS modern
+    "module": "NodeNext",                  // ESM + CommonJS interop
+    "moduleResolution": "NodeNext",        // Resolusi modern
+    "lib": ["ES2022"],                     // API JS yang tersedia
+    "outDir": "./dist",                    // Output folder
+    "rootDir": "./src",                    // Source folder
+    "declaration": true,                   // Generate .d.ts
+    "declarationMap": true,                // Source map untuk .d.ts
+    "sourceMap": true,                     // Debug support
+
+    /* === STRICT MODE (WAJIB) === */
+    "strict": true,                        // AKTIFKAN SEMUA STRICT DI BAWAH
+    "noImplicitAny": true,                 // Tolak any implicit
+    "strictNullChecks": true,              // Null safety
+    "strictFunctionTypes": true,           // Function type safety
+    "strictBindCallApply": true,           // bind/call/apply safety
+    "strictPropertyInitialization": true,  // Property harus diinisialisasi
+    "noImplicitThis": true,                // Tolak this implicit any
+    "useUnknownInCatchVariables": true,    // catch (e: unknown)
+    "alwaysStrict": true,                  // "use strict" di output
+
+    /* === ADDITIONAL SAFETY === */
+    "noUnusedLocals": true,                // Error variabel unused
+    "noUnusedParameters": true,            // Error parameter unused
+    "noImplicitReturns": true,             // Fungsi harus return
+    "noFallthroughCasesInSwitch": true,    // Switch case harus break
+    "noUncheckedIndexedAccess": true,      // Array access bisa undefined
+    "exactOptionalPropertyTypes": true,    // Optional prop beda dgn undefined
+    "forceConsistentCasingInFileNames": true, // Case-sensitive import
+
+    /* === MODULE/INTEROP === */
+    "esModuleInterop": true,               // CommonJS <-> ESM smooth
+    "allowSyntheticDefaultImports": true,  // Import default dari CJS
+    "resolveJsonModule": true,             // Import .json
+    "isolatedModules": true,               // Transpile per-file (tsx/ts-node)
+
+    /* === ADVANCED === */
+    "skipLibCheck": true,                  // Skip lib check (cepat)
+    "baseUrl": ".",                        // Base path
+    "paths": {
+      "@/*": ["src/*"]                     // Alias @/utils → src/utils
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
