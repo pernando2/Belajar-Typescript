@@ -5,7 +5,7 @@
     "target": "ES2022",                    // Output JS modern
     "module": "NodeNext",                  // ESM + CommonJS interop
     "moduleResolution": "NodeNext",        // Resolusi modern
-    "lib": ["ES2022"],                     // API JS yang tersedia
+    "lib": ["ES2022", "dom"],                     // API JS yang tersedia
     "outDir": "./dist",                    // Output folder
     "rootDir": "./src",                    // Source folder
     "declaration": true,                   // Generate .d.ts
@@ -40,9 +40,8 @@
 
     /* === ADVANCED === */
     "skipLibCheck": true,                  // Skip lib check (cepat)
-    "baseUrl": ".",                        // Base path
     "paths": {
-      "@/*": ["src/*"]                     // Alias @/utils → src/utils
+      "@/*": ["./src/*"]                     // Alias @/utils → src/utils
     }
   },
   "include": ["src/**/*"],
