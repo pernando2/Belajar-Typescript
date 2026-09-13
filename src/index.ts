@@ -73,9 +73,10 @@ function handleResult(result: Result): void {
 
 // ============ MAIN ============
 console.log("🚀 TypeScript Practice Started!");
-console.log("Developer:", saya.nama);
-console.log("Target stack:", ["TypeScript", "Node.js", "DevOps", "AI Engineering"]);
-console.log("Status:", taskStatus);
+console.log(`Biodata: Nama ${biodata[0]}, Umur ${biodata[1]}, Aktif ${biodata[2]}`);
+console.log(`Developer: ${saya.nama}, Stack: ${saya.stack.join(", ")}, Tahun Pengalaman: ${saya.tahunPengalaman}, Aktif: ${saya.aktif}`);
+console.log(`Target stack: ${["TypeScript", "Node.js", "DevOps", "AI Engineering"]}`);
+console.log(`Status: ${taskStatus}`);
 
 // Test narrowing
 console.log("Process 'hello':", processInput("hello"));
@@ -83,4 +84,3 @@ console.log("Process 3.14159:", processInput(3.14159));
 
 // Test discriminated union
 handleResult({ status: "success", data: "Belajar TS selesai!" });
-handleResult({ status: "error", message: "Lupa install tsconfig" });
