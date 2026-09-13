@@ -1,0 +1,5 @@
+[
+  { "id": "MC-01", "name": "CNC Milling", "operatingHours": 1200, "status": "RUNNING" },
+  { "id": "MC-02", "name": "Lathe Machine", "operatingHours": 3400, "status": "MAINTENANCE" },
+  { "id": "MC-03", "name": "Injection Molding", "operatingHours": 850, "status": "STOPPED" }
+]

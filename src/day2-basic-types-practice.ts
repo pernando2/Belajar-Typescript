@@ -3,8 +3,6 @@
 // Cara: Uncomment soal per soal, ketik jawaban, cek: npm run typecheck
 // Target: SEMUA soal lolos strict mode tanpa error!
 
-import { log } from "node:console";
-
 // ---------------------------------------------------------
 // SOAL 1-5: PRIMITIVE TYPES
 // ---------------------------------------------------------
@@ -31,7 +29,7 @@ console.log(hobi);
 // Type inference -> TS automatic kenali tipe dari nilai awal
 let kota = "Jakarta"; // inference: string
 kota = "123"; // ERROR: Type 'number' not assignable to 'string'
-console.log(kota)
+console.log(kota);
 
 // SOAL 3: any vs unknown — mana yang lebih safe?
 // any     -> kerenyana tipe apa saja, TIDAK ada type check (dangerous)
@@ -50,10 +48,16 @@ dataUnknown = 123;
 
 // SOAL 4: void, never, undefined, null
 // void     -> function yang KEBULI konte, tanpa return value
-function logPesan(pesan: string): void { console.log(pesan); }
+function logPesan(pesan: string): void {
+  console.log(pesan);
+}
 // never    -> function yang NOLONGERE bisa return (throw / infinite loop)
-function errorSelalu(): never { throw new Error("Selalu error"); }
-function takKembali(): never { while(true) {} }
+function errorSelalu(): never {
+  throw new Error("Selalu error");
+}
+function takKembali(): never {
+  while (true) {}
+}
 // undefined -> variable sudah deklarasi, nilai masih belum di-set
 let kosong: undefined = undefined;
 // null     -> nol, kosong
@@ -70,11 +74,9 @@ takKembali();
 let status: "pending" | "success" | "error" = "pending";
 status = "success"; // OK
 // status = "loading"; // ERROR
-console.log(status)
+console.log(status);
 // statstatus = "loading" di baris atas karena ketika set variabel status
 // tidak ada pilihan "loading", maka menghasilkan error;
-
-
 
 // ---------------------------------------------------------
 // SOAL 6-10: ARRAY & TUPLE
@@ -98,7 +100,7 @@ const readonlyArr: readonly number[] = [1, 2, 3];
 // readonlyArr.push(4); // ERROR: property 'push' does not exist
 // KODE DIATAS MENGHASILKAN ERROR KETIKA PUSH KARENA ARRAYNYA BERSIFAT READONLY (TIDAK BISA DIUBAH)
 // readonlyArr[0] = 5; // ERROR: property '0' does not exist
-console.log(readonlyArr)
+console.log(readonlyArr);
 
 // SOAL 8: Tuple — urutan & panjang tetap
 // tuple -> array yang panjangnya FIXED, itemnya berbeda tipe, di urutan yang tetap
@@ -113,27 +115,26 @@ console.log(biodata);
 let opsional: [string, number?] = ["satu"]; // OK
 // rest tuple     -> element rest, jumlahnya bisa bebanse ( ...number[] )
 let restTuple: [string, ...number[]] = ["prefix", 1, 2, 3];
-opsional.push(4) // ERROR: tuple length 2
-restTuple.push(4) // OK: rest array bisa ditambah
+opsional.push(4); // ERROR: tuple length 2
+restTuple.push(4); // OK: rest array bisa ditambah
 
 console.log(opsional);
 console.log(restTuple);
 
-
 // SOAL 10: Array methods dengan type safety
 const numbers: number[] = [1, 2, 3, 4, 5];
 // map -> iterasi item di kali 2, hasilnya array baru
-const doubled: number[] = numbers.map(n => n * 2); //iterasi item di kali 2, hasilnya array baru
+const doubled: number[] = numbers.map((n) => n * 2); //iterasi item di kali 2, hasilnya array baru
 // filter -> iterasi item di filter, hasilnya array baru
-const filtered: number[] = numbers.filter(n => n > 2); //iterasi item di filter, hasilnya array baru
+const filtered: number[] = numbers.filter((n) => n > 2); //iterasi item di filter, hasilnya array baru
 // reduce -> iterasi item dijumlahkan, hasilnya number
 const sum: number = numbers.reduce((a, b) => a + b, 0); //iterasi item dijumlahkan, hasilnya number
 // find -> bisa undefined! (number | undefined)
-const found: number | undefined = numbers.find(n => n === 3); // bisa undefined!
+const found: number | undefined = numbers.find((n) => n === 3); // bisa undefined!
 
 console.log(numbers);
 console.log(doubled);
-console.log(filtered);  
+console.log(filtered);
 console.log(sum);
 console.log(found);
 
@@ -143,22 +144,21 @@ console.log(found);
 
 // SOAL 11: Interface vs Type alias
 // interface -> struktur object yang bisa di-extend (merge), bisa extends lain interface
-interface User { 
-    id: number; 
-    name: string; 
-    email: string; 
-}
+// interface User {
+//   id: number;
+//   name: string;
+//   email: string;
+// }
 // type alias -> struktur object yang yang FIXED, tidak bisa merge, bisa any type
-type UserAlias = { 
-    id: number; 
-    name: string; 
-    email: string; 
-};
+// type UserAlias = {
+//   id: number;
+//   name: string;
+//   email: string;
+// };
 
 // Interface bisa di-extend (declaration merging)
 // interface User { role: string; } // OK - merge
 // type UserAlias = { role: string; } // ERROR: duplicate
-
 
 // SOAL 12: Optional & readonly properties
 interface Config {
@@ -181,20 +181,20 @@ console.log(scores);
 
 // SOAL 14: Nested object & interface composition
 // composition -> interface menggunakan interface lain sebagai property (address)
-interface Address { 
-    city: string; 
-    zipCode: string; 
+interface Address {
+  city: string;
+  zipCode: string;
 }
-interface Person { 
-    name: string; 
-    address: Address; 
+interface Person {
+  name: string;
+  address: Address;
 }
-const orang: Person = { 
-    name: "Nann", 
-    address: { 
-        city: "Jakarta", 
-        zipCode: "12345" 
-    }
+const orang: Person = {
+  name: "Nann",
+  address: {
+    city: "Jakarta",
+    zipCode: "12345",
+  },
 };
 console.log(orang);
 
@@ -206,7 +206,7 @@ interface Calculator {
 }
 const calc: Calculator = {
   add: (a, b) => a + b,
-  subtract: (a, b) => a - b
+  subtract: (a, b) => a - b,
 };
 console.log(calc);
 
@@ -244,32 +244,32 @@ printId(123);
 
 // SOAL 19: Type narrowing dengan "in" operator
 // narrowing "in" -> cek property yang EXIST untuk narrows tipe union
-interface Bird { 
-    fly(): void; 
-    layEggs(): void; 
-}
-interface Fish { 
-    swim(): void; 
-    layEggs(): void; 
-}
+// interface Bird {
+//   fly(): void;
+//   layEggs(): void;
+// }
+// interface Fish {
+//   swim(): void;
+//   layEggs(): void;
+// }
 
-function move(animal: Bird | Fish) {
-  if ("fly" in animal) {
-    animal.fly(); // animal is Bird
-  } else {
-    animal.swim(); // animal is Fish
-  }
-}
+// function move(animal: Bird | Fish) {
+//   if ("fly" in animal) {
+//     animal.fly(); // animal is Bird
+//   } else {
+//     animal.swim(); // animal is Fish
+//   }
+// }
 
 // SOAL 20: Type narrowing dengan instanceof
 // narrowing instanceof -> cek class instance untuk narrows tipe union
-function logError(err: Error | string) {
-  if (err instanceof Error) {
-    console.log(err.stack); // err is Error
-  } else {
-    console.log(err.toUpperCase()); // err is string
-  }
-}
+// function logError(err: Error | string) {
+//   if (err instanceof Error) {
+//     console.log(err.stack); // err is Error
+//   } else {
+//     console.log(err.toUpperCase()); // err is string
+//   }
+// }
 
 // ---------------------------------------------------------
 // BONUS: LATIHAN MENGGABUNGKAN (opsional tapi recommended)
@@ -286,15 +286,15 @@ BONUS 1: Buat type `Product` dengan:
 - discount?: number (optional)
 */
 
-type Product = {
-    readonly id: number; // readonly -> tidak bisa diubah setelah set
-    name: string;
-    price: number;
-    category: "electronics" | "clothing" | "food"; // literal type union
-    tags: string[]; // array string
-    inStock: boolean;
-    discount?: number; // optional number
-} // TODO
+// type Product = {
+//   readonly id: number; // readonly -> tidak bisa diubah setelah set
+//   name: string;
+//   price: number;
+//   category: "electronics" | "clothing" | "food"; // literal type union
+//   tags: string[]; // array string
+//   inStock: boolean;
+//   discount?: number; // optional number
+// }; // TODO
 
 /*
 BONUS 2: Buat function `formatProduct` yang menerima Product
@@ -302,9 +302,9 @@ dan return string: "[CATEGORY] NAME - RpPRICE (DISCOUNT% off)"
 handle discount yang optional!
 */
 
-function formatProduct(product: Product): string {
-    return `${product.category} ${product.name} - Rp${product.price} (${product.discount ?? "Tidak ada diskon"})`;
-} 
+// function formatProduct(product: Product): string {
+//   return `${product.category} ${product.name} - Rp${product.price} (${product.discount ?? "Tidak ada diskon"})`;
+// }
 
 // ---------------------------------------------------------
 // TEST RUNNER — JANGAN DIHAPUS

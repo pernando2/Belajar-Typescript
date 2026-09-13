@@ -5,7 +5,8 @@
     "target": "ES2022",                    // Output JS modern
     "module": "NodeNext",                  // ESM + CommonJS interop
     "moduleResolution": "NodeNext",        // Resolusi modern
-    "lib": ["ES2022", "dom"],                     // API JS yang tersedia
+    "types": ["node"],                     // Node.js built-in modules
+    "lib": ["ES2022", "dom"],              // API JS yang tersedia
     "outDir": "./dist",                    // Output folder
     "rootDir": "./src",                    // Source folder
     "declaration": true,                   // Generate .d.ts

@@ -32,10 +32,10 @@ interface Machine {
   status: "RUNNING" | "STOPPED" | "MAINTENANCE";
 }
 
-interface ProductionLog {
-  logId: string;
-  totalOutput: number;
-}
+// interface ProductionLog {
+//   logId: string;
+//   totalOutput: number;
+// }
 
 // Penggunaan 1: Response API yang membawa data Mesin
 const machineResponse: ApiResponse<Machine> = {
@@ -49,15 +49,21 @@ const machineResponse: ApiResponse<Machine> = {
 };
 
 // Penggunaan 2: Response API yang membawa data Log Produksi
-const logResponse: ApiResponse<ProductionLog> = {
-  success: true,
-  message: "Log produksi berhasil diperbarui",
-  data: {
-    logId: "LOG-20260330-01",
-    totalOutput: 1500,
-  },
-};
+// const logResponse: ApiResponse<ProductionLog> = {
+//   success: true,
+//   message: "Log produksi berhasil diperbarui",
+//   data: {
+//     logId: "LOG-20260330-01",
+//     totalOutput: 1500,
+//   },
+// };
 
+function handleMachineResponse(response: ApiResponse<Machine>) {
+  console.log("Message:", response.message);
+  console.log("Data:", response.data);
+}
+
+handleMachineResponse(machineResponse);
 console.log(machineResponse.data.name); // Auto-complete dari AntiGravity akan muncul!
 
 // Interface batasan: Harus punya properti 'id'

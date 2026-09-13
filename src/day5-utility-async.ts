@@ -19,45 +19,45 @@ updatePart("PART-01", { stock: 50 });
 
 // B. Omit<T, K> (Membuang Properti Tertentu)
 // Mengambil semua properti Sparepart KECUALI 'id' dan 'lastMaintenance'
-type CreateSparepartDto = Omit<Sparepart, "id" | "lastMaintenance">;
+// type CreateSparepartDto = Omit<Sparepart, "id" | "lastMaintenance">;
 
-const newPart: CreateSparepartDto = {
-  name: "Bearing 6205",
-  stock: 100,
-  location: "Rack A-2",
-};
+// const newPart: CreateSparepartDto = {
+//   name: "Bearing 6205",
+//   stock: 100,
+//   location: "Rack A-2",
+// };
 
 // C. Pick<T, K> (Mengambil Properti Tertentu Saja)
 // Hanya mengambil 'id' dan 'name' untuk kebutuhan dropdown di UI
-type SparepartDropdown = Pick<Sparepart, "id" | "name">;
+// type SparepartDropdown = Pick<Sparepart, "id" | "name">;
 
-const option: SparepartDropdown = {
-  id: "PART-01",
-  name: "Bearing 6205",
-};
+// const option: SparepartDropdown = {
+//   id: "PART-01",
+//   name: "Bearing 6205",
+// };
 
 // D. Readonly<T> (Objek Murni Imutabel / Tidak Bisa Diubah)
-type MachineConfig = Readonly<{
-  maxTemperature: number;
-  safetyMode: boolean;
-}>;
+// type MachineConfig = Readonly<{
+//   maxTemperature: number;
+//   safetyMode: boolean;
+// }>;
 
-const config: MachineConfig = {
-  maxTemperature: 85,
-  safetyMode: true,
-};
+// const config: MachineConfig = {
+//   maxTemperature: 85,
+//   safetyMode: true,
+// };
 
 // config.maxTemperature = 90; // ERROR di AntiGravity! Properti ini Readonly.
 
 // E. Record<K, T> (Membuat Mapping Key-Value yang Rapi)
-type MachineStatus = "RUNNING" | "STOPPED" | "MAINTENANCE";
+// type MachineStatus = "RUNNING" | "STOPPED" | "MAINTENANCE";
 
 // Key harus bertipe MachineStatus, dan Valuenya harus bertipe string
-const StatusDescription: Record<MachineStatus, string> = {
-  RUNNING: "Mesin sedang beroperasi normal",
-  STOPPED: "Mesin berhenti/standby",
-  MAINTENANCE: "Mesin dalam perbaikan rutin",
-};
+// const StatusDescription: Record<MachineStatus, string> = {
+//   RUNNING: "Mesin sedang beroperasi normal",
+//   STOPPED: "Mesin berhenti/standby",
+//   MAINTENANCE: "Mesin dalam perbaikan rutin",
+// };
 
 // 2. Async/Await dengan Strong Typing
 // Model Data Response
