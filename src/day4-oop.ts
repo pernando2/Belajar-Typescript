@@ -200,4 +200,8 @@ console.log("Update Data User Ditemukan:", foundUser2);
 const deleteStatus = userRepo.delete("USR-001");
 console.log(`Status Delete: ${deleteStatus ? "Berhasil" : "Gagal"}`); // Status Delete: Berhasil
 
-// 2. Cari data user berdasarkan ID
+const findUser3 = userRepo.findById("USR-001");
+console.log("Cari User 3:", findUser3);
+
+const getAllUser = userRepo.findAll();
+console.log("Semua User:", getAllUser);
